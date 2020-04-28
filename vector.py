@@ -2,6 +2,9 @@ from math import sqrt
 from math import acos
 from math import degrees
 
+class Point():
+    
+
 class Vector():
 
     def __init__(self, x, y, z):
@@ -45,7 +48,7 @@ class Vector():
         y = self.y
         z = self.z
         for each in other:
-            if (type(each) is int):
+            if (type(each) is int or type(each) is float):
                 x *= each
                 y *= each
                 z *= each
@@ -56,6 +59,7 @@ class Vector():
         return Vector(x, y, z)
 
 def center(vector1, vector2):
+    "Lay trung diem cua 2 vector"
     return Vector((vector1.x+vector2.x)/2, (vector1.y+vector2.y)/2, (vector1.z+vector2.z)/2)
 
 def tichvohuong(vector1, vector2):

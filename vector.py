@@ -49,14 +49,17 @@ class Point():
                 y *= each
                 z *= each
         return Point(x, y, z)
+    
+    def toVector(self):
+        return Vector(self.x, self.y, self.z)
 
 class Vector():
 
-    def __init__(self, pointa, pointb):
-        self.x = pointb.x - pointa.x
-        self.y = pointb.y - pointa.y
-        self.z = pointb.z - pointa.z
-        self.length = sqrt(self.x**2 + self.y**2 + self.z**2)
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.length = sqrt(x**2 + y**2 + z**2)
 
     def __str__(self):
         return "Vector: (%d, %d, %d)" % (self.x, self.y, self.z)
@@ -114,12 +117,14 @@ def tichvohuong(vector1, vector2):
 def gocgiua2vector(vector1, vector2):
     assert (type(vector1) is Vector) and (type(vector2) is Vector), 'Invalid input type.'
     return acos(tichvohuong(vector1, vector2)/(vector1.length*vector2.length))
+
+def getVector(pointa, pointb):
+    return Vector(pointb.x-pointa.x, pointb.y-pointa.y, pointb.z-pointa.z)
     
 
 
 if (__name__ == '__main__'):
-    O = Point(0, 0, 0)
-    a = Point(3, 9, 4)
-    b = Point(2, 2, 3)
-    c = Vector(O, a)
-    print(a, c)
+    A = Point(3, 9, 2)
+    B = Point(1, 3, 0)
+    print(getVector(A, B))
+    print(A.toVector())
